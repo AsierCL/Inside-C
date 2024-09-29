@@ -15,9 +15,12 @@ int es_little_endian() {
 }
 
 int main() {
-    int var = 0x12345678;  // Un entero de 4 bytes con el valor hexadecimal 0x12345678
+    // Un entero de 4 bytes con el valor hexadecimal 0x12345678
+    // Valor en decimal: 305419896
+    int var = 0x12345678;  
 
-    printf("Valor de var: 0x%x\n", var);
+    printf("Valor de var en hexadecimal: 0x%x\n", var);
+    printf("Valor de var en decimal: %d\n", var);
     printf("Direccion de var: %p\n", (void*)&var);
 
     // Mostrar los bytes de var en memoria
