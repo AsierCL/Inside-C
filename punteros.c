@@ -3,17 +3,17 @@
 #include <unistd.h>
 
 int main(){
-    printf("\n\n──────────────────────────────────────────────\n\n");
+    printf("\n──────────────────────────────────────────────\n\n");
     printf("\t1.- Valor y dirección\n\n");
     printf("──────────────────────────────────────────────\n\n");
 
-    int var = 5;
+    int var = 45;
     printf("Empezamos creando una variabe tipo int\n");
     printf("int var = 45\n");
     printf("Esta variable tiene un valor de 45. Podemos consultar dicho valor:\n");
     printf("printf(\"%%d\", var);\n");
     printf("Nos devuelve lo siguiente: %d\n",var);
-    printf("Esta variable se encuentra almacenada en algún sitio.\n");
+    printf("Esta variable se encuentra almacenada en algún sitio\n");
     printf("Para consultar la direccion de memoria en la que se encuentra, podemos usar &var\n");
     printf("Imprimimos &var usando %%p, ya que es un valor hexadecimal\n");
     printf("printf(\"%%p\", &var);\n");
@@ -23,7 +23,7 @@ int main(){
     printf("┌───────────────────────────────────┐\n");
     printf("│ Dirección de memoria │  Variable  │\n");
     printf("│         &var         │    var     │\n");
-    printf("│    %p    │     %d      │\n",&var,var);
+    printf("│    %p    │     %d     │\n",&var,var);
     printf("└───────────────────────────────────┘\n\n");
 
 
@@ -40,7 +40,7 @@ int main(){
     printf("Para que esto sirva de algo, tenemos que asignar un espacio en memoria,\nes decir, definir cuanto ocupa el dato, para saber cuantos \"huecos\" de memoria asignar\n");
     printf("Para ello, usamos malloc, de la siguiente forma:\n");
     printf("ptr = malloc(sizeof(int));\n");
-    printf("En esta linea, declaramos que puntero tendrá el tamaño de un int\n");
+    printf("En esta linea, declaramos que puntero tendrá el tamaño de un int\n\n");
 
     printf("Ahora, volvemos a tener una situación similar a el apartado 1\n");
     printf("En este caso, ptr es un puntero.\n");
@@ -79,11 +79,11 @@ int main(){
     printf("│ Valor │     Dirección    │\n");
     printf("│   a   │        &a        │\n");
     printf("│   %d   │  %p  │\n",a,&a);
-    printf("────────────────────────────\n");
+    printf("├──────────────────────────┤\n");
     printf("│ Valor │     Dirección    │\n");
     printf("│   b   │        &b        │\n");
     printf("│   %d   │  %p  │\n",b,&b);
-    printf("────────────────────────────\n");
+    printf("├──────────────────────────┤\n");
     printf("│ Valor │     Dirección    │\n");
     printf("│  *c   │         c        │\n");
     printf("│   %d   │  %p  │\n",*c,c);
@@ -100,11 +100,11 @@ int main(){
     printf("│ Valor │     Dirección    │\n");
     printf("│   a   │        &a        │\n");
     printf("│   %d   │  %p  │\n",a,&a);
-    printf("────────────────────────────\n");
+    printf("├──────────────────────────┤\n");
     printf("│ Valor │     Dirección    │\n");
     printf("│   b   │        &b        │\n");
     printf("│   %d   │  %p  │\n",b,&b);
-    printf("────────────────────────────\n");
+    printf("├──────────────────────────┤\n");
     printf("│ Valor │     Dirección    │\n");
     printf("│  *c   │         c        │\n");
     printf("│   %d   │  %p  │\n",*c,c);
@@ -124,11 +124,11 @@ int main(){
     printf("│ Valor │     Dirección    │\n");
     printf("│   a   │        &a        │\n");
     printf("│   %d   │  %p  │\n",a,&a);
-    printf("────────────────────────────\n");
+    printf("├──────────────────────────┤\n");
     printf("│ Valor │     Dirección    │\n");
     printf("│   b   │        &b        │\n");
     printf("│   %d   │  %p  │\n",b,&b);
-    printf("────────────────────────────\n");
+    printf("├──────────────────────────┤\n");
     printf("│ Valor │     Dirección    │\n");
     printf("│  *c   │         c        │\n");
     printf("│   %d   │  %p  │\n",*c,c);
@@ -145,11 +145,11 @@ int main(){
     printf("│ Valor │     Dirección    │\n");
     printf("│   a   │        &a        │\n");
     printf("│   %d   │  %p  │\n",a,&a);
-    printf("────────────────────────────\n");
+    printf("├──────────────────────────┤\n");
     printf("│ Valor │     Dirección    │\n");
     printf("│   b   │        &b        │\n");
     printf("│   %d   │  %p  │\n",b,&b);
-    printf("────────────────────────────\n");
+    printf("├──────────────────────────┤\n");
     printf("│ Valor │     Dirección    │\n");
     printf("│  *c   │         c        │\n");
     printf("│   %d   │  %p  │\n",*c,c);
