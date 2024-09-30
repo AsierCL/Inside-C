@@ -26,6 +26,7 @@ int main(){
     printf("│    %p    │     %d     │\n",&var,var);
     printf("└───────────────────────────────────┘\n\n");
 
+    getchar();
 
     printf("\n\n──────────────────────────────────────────────\n\n");
     printf("\t2.- Punteros\n\n");
@@ -62,6 +63,8 @@ int main(){
     printf("│    %d     │ %p │ %p │\n",*ptr,ptr,&ptr);
     printf("└─────────────────────────────────────────────┘\n\n");
     
+    getchar();
+
     
     printf("\n\n──────────────────────────────────────────────\n\n");
     printf("\t3.- Cambio de valores\n\n");
@@ -89,7 +92,7 @@ int main(){
     printf("│   %d   │  %p  │\n",*c,c);
     printf("└──────────────────────────┘\n");
 
-    printf("Ahora, vamos a hacer que el puntero 'c' apunte a la posiciónde memoria donde está 'a'");
+    printf("Ahora, vamos a hacer que el puntero 'c' apunte a la posiciónde memoria donde está 'a'\n");
     printf("c = &a;\n");
     c = &a;
     printf("Si ahora imprimimos *c, veremos que es igual a el valor de a,\npuesto que estamos imprimiendo el contenido de la dirección de memoria en la que se almacenó 'a'\n");
@@ -110,6 +113,7 @@ int main(){
     printf("│   %d   │  %p  │\n",*c,c);
     printf("└──────────────────────────┘\n");
 
+    getchar();
 
     printf("\nIMPORTANTE:\n");
     printf("Ahora empieza lo curioso... Si modificamos el valor almacenado en c, modificamos también a\n");
@@ -155,7 +159,7 @@ int main(){
     printf("│   %d   │  %p  │\n",*c,c);
     printf("└──────────────────────────┘\n");
 
-
+    getchar();
 
     printf("\n\n──────────────────────────────────────────────\n\n");
     printf("\t4.- Puntero a puntero\n\n");
@@ -199,7 +203,7 @@ int main(){
     printf("┌────────────────────────────────────────────────────────┐\n");
     printf("│        Var       │        ptr       │       pptr       │\n");
     printf("├────────────────────────────────────────────────────────┤\n");
-    printf("│        var       │       *ptr       │       pptr       │\n");
+    printf("│        var       │       *ptr       │     **pptr       │\n");
     printf("│        %d        │        %d        │        %d        │\n", var, *ptr, **pptr);
     printf("│       &var       │        ptr       │      *pptr       │\n");
     printf("│  %p  │  %p  │  %p  │\n", &var, ptr, *pptr);
