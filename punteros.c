@@ -64,7 +64,7 @@ int main(){
     
     
     printf("\n\n──────────────────────────────────────────────\n\n");
-    printf("\t3.- Pruebas\n\n");
+    printf("\t3.- Cambio de valores\n\n");
     printf("──────────────────────────────────────────────\n\n");
 
     printf("Ahora, vamos a experimentar un poco con los punteros\n");
@@ -154,6 +154,64 @@ int main(){
     printf("│  *c   │         c        │\n");
     printf("│   %d   │  %p  │\n",*c,c);
     printf("└──────────────────────────┘\n");
+
+
+
+    printf("\n\n──────────────────────────────────────────────\n\n");
+    printf("\t4.- Puntero a puntero\n\n");
+    printf("──────────────────────────────────────────────\n\n");
+
+    var = 10;
+    ptr = &var;
+    int **pptr = &ptr;
+
+    printf("Ahora vamos a ver el concepto de puntero a puntero.\n");
+    printf("Primero, tenemos una variable normal:\n");
+    printf("int var = 10;\n");
+    printf("Podemos consultar el valor de esta variable con var o su dirección con &var.\n");
+    printf("printf(\"%%d\", var);\n");
+    printf("%d\n", var);
+    printf("printf(\"%%p\", &var);\n");
+    printf("%p\n", &var);
+
+    printf("\nA continuación, tenemos un puntero que apunta a 'var':\n");
+    printf("int *ptr = &var;\n");
+    printf("Podemos consultar el valor de 'var' usando *ptr y su dirección con ptr.\n");
+    printf("printf(\"%%d\", *ptr);\n");
+    printf("%d\n", *ptr);
+    printf("printf(\"%%p\", ptr);\n");
+    printf("%p\n", ptr);
+
+    printf("\nFinalmente, creamos un puntero a puntero, que guarda la dirección del puntero 'ptr':\n");
+    printf("int **pptr = &ptr;\n");
+    printf("Este puntero a puntero nos permite acceder tanto a la dirección del puntero como al valor de 'var'.\n");
+    printf("Para consultar el valor de 'var', debemos desreferenciar dos veces: **pptr\n");
+    printf("printf(\"%%d\", **pptr);\n");
+    printf("%d\n", **pptr);
+    printf("Para consultar la dirección de 'ptr', usamos *pptr\n");
+    printf("printf(\"%%p\", *pptr);\n");
+    printf("%p\n", *pptr);
+    printf("Y para consultar la dirección de 'pptr', simplemente pptr\n");
+    printf("printf(\"%%p\", pptr);\n");
+    printf("%p\n", pptr);
+
+    printf("\nRepresentación en memoria:\n");
+    printf("┌────────────────────────────────────────────────────────┐\n");
+    printf("│        Var       │        ptr       │       pptr       │\n");
+    printf("├────────────────────────────────────────────────────────┤\n");
+    printf("│        var       │       *ptr       │       pptr       │\n");
+    printf("│        %d        │        %d        │        %d        │\n", var, *ptr, **pptr);
+    printf("│       &var       │        ptr       │      *pptr       │\n");
+    printf("│  %p  │  %p  │  %p  │\n", &var, ptr, *pptr);
+    printf("│                  │       &ptr       │       pptr       │\n");
+    printf("│                  │  %p  │  %p  │\n", &ptr, pptr);
+    printf("│                  │                  │      &pptr       │\n");
+    printf("│                  │                  │  %p  │\n", &pptr);
+    printf("└────────────────────────────────────────────────────────┘\n\n");
+
+    printf("Resumiendo, un puntero a puntero es simplemente una variable que contiene la dirección de otro puntero.\n");
+    printf("Este concepto es útil para acceder y modificar variables de manera indirecta a través de múltiples niveles de punteros.\n");
+
 
     return 0;
 }
