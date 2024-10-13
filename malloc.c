@@ -1,6 +1,12 @@
 #include <stdio.h>
 #include <stdint.h>
 
+void printBinary(unsigned char byte) {
+    for (int i = 7; i >= 0; i--) {
+        printf("%c", (byte & (1 << i)) ? '1' : '0');
+    }
+}
+
 int main() {
     printf("\n──────────────────────────────────────────────\n\n");
     printf("\t1.- Estructura mínima\n\n");
@@ -18,7 +24,7 @@ int main() {
     printf("Tamaño de uint8_t: %zu bytes\n", sizeof(uint8_t));
     printf("Este último tipo es parte de la libreria stdint.h, donde el 8 hace referencia a los bits que ocupa. Lo usaremos más adelante\n");
 
-    //getchar();
+    getchar();
 
     printf("\n──────────────────────────────────────────────\n\n");
     printf("\t2.- Almacenamiento en memoria\n\n");
@@ -27,20 +33,20 @@ int main() {
     printf("En los ordenadores modernos, el habitual es el segundo. Big y little hacen referencia a que byte se almacena primero\n");
     printf("Big-endian es lo \"normal\", ya que los bytes de más peso se almacenan primero. Little endian es justo al contrario\n");
     printf("Para verlo más facil, vamos a hacer una prueba. Creamos un int numero = 305419896. Este int es el valor hexadecimal 0x12345678\n");
-    printf("Si imprimimos el valor con printf(%%d), vemos que retorna el valor numérico. Si lo imprimimos con %%x, lo devuelve en hexadecimal");
+    printf("Si imprimimos el valor con printf(%%d), vemos que retorna el valor numérico. Si lo imprimimos con %%x, lo devuelve en hexadecimal\n");
     int numero = 305419896;
     printf("Print con %%d: %d\n",numero);
-    printf("Print con %%x: %x\n",numero);
+    printf("Print con %%x: 0x%x\n",numero);
     printf("Si tenemos una visión macroscópica en nuestros programas, las variables están en cajas, cada una con su información\n");
     printf("Esas cajas están colocadas en x dirección de memoria, como vimos en punteros\n");
-    printf("Sin embargo, si hacemos zoom, vemos que las cajas a nivel microscópico tienen subcajas, que son los bytes");
-    printf("Asi, nuestra variable número tiene 4 subcajas, dado que un int ocupa 4bytes\n");
+    printf("Sin embargo, si hacemos zoom, vemos que las cajas a nivel microscópico tienen subcajas, que son los bytes\n");
+    printf("Asi, nuestra variable número tiene 4 subcajas, dado que un int ocupa 4 bytes\n");
     printf("Cuando imprimimos el puntero a una variable, este apunta a la dirección de memoria del primer byte de esta\n");
     printf("Por ello, cuando hacemos un printf, debemos de especificar el tipo de variable que imprimimos\n");
     printf("No es lo mismo imprimir un char, que solo tienes que imprimir el valor de la primera subcajita a la que apuntas\n");
     printf("a tener que imprimir un int, en el que tienes que cojer el valor de la primera, la segunda, la tercera y la cuarta subcajita\n");
 
-    //getchar();
+    getchar();
 
     printf("\nVamos a verlo gráficamente:\n");
     uintptr_t direccion = (uintptr_t)&numero;
@@ -60,18 +66,18 @@ int main() {
     printf("En este caso, hay un byte con los bits: 01111000. Si lo interpretamos como un int, tenemos un 78, y como un char, una \"X\"\n");
     printf("\nRepresentado nuestro int a nivel de memoria, tenemos lo siguiente:\n");
     printf("\tint numero\n");
-    printf("---------------------------\n");
+    printf("--------------------------------------\n");
+    printf("|    Dir de mem    |  Hex | Binario  |\n");
+    printf("--------------------------------------\n");
 
     for(int i = 0; i<4; i++){
-        printf("|  %p  |  %X  |\n",direccion+i,byte[i]);
+        printf("|  %p  |  %X  | ",direccion+i,byte[i],byte[i]);
+        printBinary(byte[i]);
+        printf(" |\n");
     }
-    printf("---------------------------\n");
+    printf("--------------------------------------\n");
 
-    //getchar();
-
-    printf("\n──────────────────────────────────────────────\n\n");
-    printf("\t2.- Reserva de memoria\n\n");
-    printf("──────────────────────────────────────────────\n\n");
+    getchar();
 
     return 0;
 }
