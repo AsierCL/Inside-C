@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdint.h>
 
 void mostrar_bytes(void *ptr, size_t size) {
     unsigned char *byte = (unsigned char *)ptr;
@@ -11,7 +12,7 @@ void mostrar_bytes(void *ptr, size_t size) {
 
 int es_little_endian() {
     unsigned int x = 1;
-    return *((unsigned char*)&x);  // Retorna 1 si es little-endian, 0 si es big-endian
+    return *((uint8_t*)&x);  // Retorna 1 si es little-endian, 0 si es big-endian
 }
 
 int main() {
@@ -22,6 +23,7 @@ int main() {
     printf("Valor de var en hexadecimal: 0x%x\n", var);
     printf("Valor de var en decimal: %d\n", var);
     printf("Direccion de var: %p\n", (void*)&var);
+    printf("Tamaño de un int: %x\n",sizeof(int));
 
     // Mostrar los bytes de var en memoria
     mostrar_bytes(&var, sizeof(var));
