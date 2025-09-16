@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 int main(){
     printf("\n──────────────────────────────────────────────\n\n");
@@ -7,22 +6,23 @@ int main(){
     printf("──────────────────────────────────────────────\n\n");
 
     int var = 45;
-    printf("Empezamos creando una variabe tipo int\n");
-    printf("int var = 45\n");
+    printf("Empezamos creando una variable tipo int:\n");
+    printf("int var = 45;\n\n");
     printf("Esta variable tiene un valor de 45. Podemos consultar dicho valor:\n");
     printf("printf(\"%%d\", var);\n");
-    printf("Nos devuelve lo siguiente: %d\n",var);
-    printf("Esta variable se encuentra almacenada en algún sitio\n");
-    printf("Para consultar la direccion de memoria en la que se encuentra, podemos usar &var\n");
-    printf("Imprimimos &var usando %%p, ya que es un valor hexadecimal\n");
-    printf("printf(\"%%p\", &var);\n");
-    printf("%p\n",&var);
+    printf("Nos devuelve lo siguiente: %d\n\n", var);
+
+    printf("Esta variable se encuentra almacenada en algún sitio.\n");
+    printf("Para consultar la dirección de memoria en la que se encuentra, usamos &var.\n");
+    printf("Imprimimos &var usando %%p, ya que es un valor hexadecimal:\n");
+    printf("printf(\"%%p\", (void*)&var);\n");
+    printf("%p\n\n", (void*)&var);
 
     printf("Resumiendo rápido:\n\n");
     printf("┌───────────────────────────────────┐\n");
     printf("│ Dirección de memoria │  Variable  │\n");
     printf("│         &var         │    var     │\n");
-    printf("│    %p    │     %d     │\n",&var,var);
+    printf("│    %p    │     %d     │\n",(void*)&var, var);
     printf("└───────────────────────────────────┘\n\n");
 
     getchar();
@@ -31,50 +31,41 @@ int main(){
     printf("\t2.- Punteros\n\n");
     printf("──────────────────────────────────────────────\n\n");
 
-    int *ptr;
-    ptr = malloc(sizeof(int));
-    *ptr = 30;
-    printf("Ahora, crearemos una variable de tipo puntero. Para ello usamos el *\n");
-    printf("int *ptr\n");
-    printf("Acabamos de declarar donde empieza la dir de memoria que almacenará algo, en este caso un int\n");
-    printf("Para que esto sirva de algo, tenemos que asignar un espacio en memoria,\nes decir, definir cuanto ocupa el dato, para saber cuantos \"huecos\" de memoria asignar\n");
-    printf("Para ello, usamos malloc, de la siguiente forma:\n");
-    printf("ptr = malloc(sizeof(int));\n");
-    printf("En esta linea, declaramos que puntero tendrá el tamaño de un int\n\n");
+    int *ptr = &var;
+    printf("Ahora creamos una variable de tipo puntero:\n");
+    printf("int *ptr = &var;\n\n");
 
-    printf("Ahora, volvemos a tener una situación similar a el apartado 1\n");
-    printf("En este caso, ptr es un puntero.\n");
-    printf("printf(\"%%p\", ptr);\n");
-    printf("%p\n",ptr);
-    printf("Para acceder a su contenido, debemos usar *ptr\n");
+    printf("En este caso, ptr almacena la dirección de memoria de 'var'.\n");
+    printf("printf(\"%%p\", (void*)ptr);\n");
+    printf("%p\n", (void*)ptr);
+
+    printf("Para acceder a su contenido, usamos *ptr:\n");
     printf("printf(\"%%d\", *ptr);\n");
-    printf("%d\n",*ptr);
-    printf("Ahora, a su vez, el puntero ptr, está almacenado en una dirección de memoria\n");
-    printf("Para ver esta dirección, usamos &ptr\n");
-    printf("printf(\"%%p\", &ptr);\n");
-    printf("%p\n",&ptr);
+    printf("%d\n\n", *ptr);
+
+    printf("El puntero 'ptr' también está almacenado en una dirección de memoria propia:\n");
+    printf("printf(\"%%p\", (void*)&ptr);\n");
+    printf("%p\n\n", (void*)&ptr);
 
     printf("Representación en memoria:\n");
     printf("┌─────────────────────────────────────────────┐\n");
     printf("│ Valor int │    Dir int     │  Dir puntero   │\n");
     printf("├─────────────────────────────────────────────┤\n");
-    printf("│   *ptr    │      ptr       │      &ptr      │\n", var, (void*)&var);
-    printf("│    %d     │ %p │ %p │\n",*ptr,ptr,&ptr);
+    printf("│   *ptr    │      ptr       │      &ptr      │\n");
+    printf("│    %d     │ %p │ %p │\n", *ptr, (void*)ptr, (void*)&ptr);
     printf("└─────────────────────────────────────────────┘\n\n");
 
     getchar();
-
 
     printf("\n\n──────────────────────────────────────────────\n\n");
     printf("\t3.- Cambio de valores\n\n");
     printf("──────────────────────────────────────────────\n\n");
 
-    printf("Ahora, vamos a experimentar un poco con los punteros\n");
-    printf("Declaramos 2 variables tipo int: int a=5, b=3;\n");
-    printf("Declaramos 1 variable tipo *int: int *c = malloc(sizeof(int));\n");
-    int a = 5,b = 3;
-    int *c = malloc(sizeof(int));
+    int a = 5, b = 3;
+    int *c = &a;
 
+    printf("Declaramos dos variables: int a=5, b=3;\n");
+    printf("Declaramos un puntero: int *c = &a;\n\n");
 
     printf("La situación actual es la siguiente:\n");
     printf("┌──────────────────────────┐\n");
@@ -168,53 +159,57 @@ int main(){
     ptr = &var;
     int **pptr = &ptr;
 
-    printf("Ahora vamos a ver el concepto de puntero a puntero.\n");
-    printf("Primero, tenemos una variable normal:\n");
+    printf("Un puntero a puntero es una variable que contiene la dirección de otro puntero.\n\n");
+    printf("Ejemplo:\n");
     printf("int var = 10;\n");
-    printf("Podemos consultar el valor de esta variable con var o su dirección con &var.\n");
-    printf("printf(\"%%d\", var);\n");
-    printf("%d\n", var);
-    printf("printf(\"%%p\", &var);\n");
-    printf("%p\n", &var);
-
-    printf("\nA continuación, tenemos un puntero que apunta a 'var':\n");
     printf("int *ptr = &var;\n");
-    printf("Podemos consultar el valor de 'var' usando *ptr y su dirección con ptr.\n");
-    printf("printf(\"%%d\", *ptr);\n");
-    printf("%d\n", *ptr);
-    printf("printf(\"%%p\", ptr);\n");
-    printf("%p\n", ptr);
+    printf("int **pptr = &ptr;\n\n");
 
-    printf("\nFinalmente, creamos un puntero a puntero, que guarda la dirección del puntero 'ptr':\n");
-    printf("int **pptr = &ptr;\n");
-    printf("Este puntero a puntero nos permite acceder tanto a la dirección del puntero como al valor de 'var'.\n");
-    printf("Para consultar el valor de 'var', debemos desreferenciar dos veces: **pptr\n");
-    printf("printf(\"%%d\", **pptr);\n");
-    printf("%d\n", **pptr);
-    printf("Para consultar la dirección de 'ptr', usamos *pptr\n");
-    printf("printf(\"%%p\", *pptr);\n");
-    printf("%p\n", *pptr);
-    printf("Y para consultar la dirección de 'pptr', simplemente pptr\n");
-    printf("printf(\"%%p\", pptr);\n");
-    printf("%p\n", pptr);
+    printf("Valor de var: %d\n", var);
+    printf("Dirección de var: %p\n", (void*)&var);
+    printf("Valor de *ptr (contenido de var): %d\n", *ptr);
+    printf("Dirección almacenada en ptr: %p\n", (void*)ptr);
+    printf("Valor de **pptr (contenido de var): %d\n", **pptr);
+    printf("Dirección almacenada en *pptr (es decir, ptr): %p\n", (void*)*pptr);
+    printf("Dirección de pptr: %p\n\n", (void*)pptr);
 
-    printf("\nRepresentación en memoria:\n");
-    printf("┌────────────────────────────────────────────────────────┐\n");
-    printf("│        Var       │        ptr       │       pptr       │\n");
-    printf("├────────────────────────────────────────────────────────┤\n");
-    printf("│        var       │       *ptr       │     **pptr       │\n");
-    printf("│        %d        │        %d        │        %d        │\n", var, *ptr, **pptr);
-    printf("│       &var       │        ptr       │      *pptr       │\n");
-    printf("│  %p  │  %p  │  %p  │\n", &var, ptr, *pptr);
-    printf("│                  │       &ptr       │       pptr       │\n");
-    printf("│                  │  %p  │  %p  │\n", &ptr, pptr);
-    printf("│                  │                  │      &pptr       │\n");
-    printf("│                  │                  │  %p  │\n", &pptr);
-    printf("└────────────────────────────────────────────────────────┘\n\n");
+    getchar();
 
-    printf("Resumiendo, un puntero a puntero es simplemente una variable que contiene la dirección de otro puntero.\n");
-    printf("Este concepto es útil para acceder y modificar variables de manera indirecta a través de múltiples niveles de punteros.\n");
+    printf("\n\n──────────────────────────────────────────────\n\n");
+    printf("\t5.- Puntero nulo (NULL)\n\n");
+    printf("──────────────────────────────────────────────\n\n");
 
+    int *null_ptr = NULL;
+    printf("Un puntero nulo es un puntero que no apunta a ninguna dirección válida.\n");
+    printf("Ejemplo: int *null_ptr = NULL;\n\n");
+
+    printf("Dirección almacenada en null_ptr: %p\n", (void*)null_ptr);
+    printf("Intentar acceder a *null_ptr provocaría un error (segmentation fault).\n\n");
+
+    getchar();
+
+    printf("\n\n──────────────────────────────────────────────\n\n");
+    printf("\t6.- Punteros con const\n\n");
+    printf("──────────────────────────────────────────────\n\n");
+
+    const int x = 42;
+    const int *p1 = &x;  // Puntero a un entero constante
+    int y = 100;
+    int *const p2 = &y;  // Puntero constante a un entero
+
+    printf("Existen dos formas comunes de combinar const con punteros:\n\n");
+    printf("1) const int *p1 → puntero a un entero constante.\n");
+    printf("   El valor al que apunta no puede modificarse a través del puntero.\n");
+    printf("   *p1 = 50;  // error\n\n");
+
+    printf("2) int *const p2 → puntero constante a un entero.\n");
+    printf("   El puntero no puede cambiar de dirección, pero el valor sí puede modificarse.\n");
+    printf("   *p2 = 200; // válido\n\n");
+
+    printf("Ejemplo:\n");
+    printf("x = %d (acceso con p1 = %p)\n", *p1, (void*)p1);
+    *p2 = 200;
+    printf("y (modificado a través de p2) = %d (p2 = %p)\n", *p2, (void*)p2);
 
     return 0;
 }
