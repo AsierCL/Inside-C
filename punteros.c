@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 
 int main(){
     printf("\n──────────────────────────────────────────────\n\n");
@@ -54,7 +53,7 @@ int main(){
     printf("Para ver esta dirección, usamos &ptr\n");
     printf("printf(\"%%p\", &ptr);\n");
     printf("%p\n",&ptr);
-    
+
     printf("Representación en memoria:\n");
     printf("┌─────────────────────────────────────────────┐\n");
     printf("│ Valor int │    Dir int     │  Dir puntero   │\n");
@@ -62,10 +61,10 @@ int main(){
     printf("│   *ptr    │      ptr       │      &ptr      │\n", var, (void*)&var);
     printf("│    %d     │ %p │ %p │\n",*ptr,ptr,&ptr);
     printf("└─────────────────────────────────────────────┘\n\n");
-    
+
     getchar();
 
-    
+
     printf("\n\n──────────────────────────────────────────────\n\n");
     printf("\t3.- Cambio de valores\n\n");
     printf("──────────────────────────────────────────────\n\n");
@@ -77,7 +76,7 @@ int main(){
     int *c = malloc(sizeof(int));
 
 
-    printf("La situación actual es la siguiente:\n");    
+    printf("La situación actual es la siguiente:\n");
     printf("┌──────────────────────────┐\n");
     printf("│ Valor │     Dirección    │\n");
     printf("│   a   │        &a        │\n");
