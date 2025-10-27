@@ -2,16 +2,13 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-void printBinary(unsigned char byte)
-{
-        for (int i = 7; i >= 0; i--)
-        {
+void printBinary(unsigned char byte) {
+        for (int i = 7; i >= 0; i--) {
                 printf("%c", (byte & (1 << i)) ? '1' : '0');
         }
 }
 
-int main()
-{
+int main() {
         printf("\n──────────────────────────────────────────────\n\n");
         printf("\t1.- Estructura mínima\n\n");
         printf("──────────────────────────────────────────────\n\n");
@@ -25,6 +22,7 @@ int main()
         printf("Tamaño de char: %zu bytes\n", sizeof(char));
         printf("Tamaño de uint8_t: %zu bytes\n", sizeof(uint8_t));
         printf("El tipo uint8_t viene de stdint.h y garantiza 1 byte (8 bits).\n");
+        printf("Todas las otras opciones estandar tienen tamaños que pueden variar según la arquitectura.\n");
 
         getchar();
 
@@ -38,17 +36,16 @@ int main()
         printf("Print con %%x: 0x%x\n", numero);
 
         uintptr_t direccion = (uintptr_t)&numero;
-        printf("La dirección de memoria de 'numero' es: %p\n", (void *)&numero);
-        printf("Como ocupa 4 bytes, el rango es [%p .. %p]\n", (void *)direccion, (void *)(direccion + 3));
+        printf("La dirección de memoria de 'numero' es: %p\n", &numero);
+        printf("Como ocupa 4 bytes, el rango es [%p .. %p]\n", direccion, (direccion + 3));
 
         uint8_t *byte = (uint8_t *)&numero;
         printf("\nRepresentación byte a byte en memoria:\n");
         printf("┌────────────────────────────────────┐\n");
         printf("│    Dir de mem    │  Hex │ Binario  │\n");
         printf("├────────────────────────────────────┤\n");
-        for (int i = 0; i < 4; i++)
-        {
-                printf("│  %p  │  %02X  │ ", (void *)(direccion + i), byte[i]);
+        for (int i = 0; i < 4; i++) {
+                printf("│  %p  │  %02X  │ ", (direccion + i), byte[i]);
                 printBinary(byte[i]);
                 printf(" │\n");
         }
@@ -65,20 +62,18 @@ int main()
         printf("Malloc reserva memoria dinámica. Ejemplo: reservar un array de 10 enteros.\n");
 
         int *array = malloc(10 * sizeof(int));
-        if (array == NULL)
-        {
+        printf("int *array = malloc(10 * sizeof(int));\n");
+        if (array == NULL) {
                 printf("Error: no se pudo asignar memoria\n");
                 return 1;
         }
 
-        for (int i = 0; i < 10; i++)
-        {
+        for (int i = 0; i < 10; i++) {
                 array[i] = i * 10;
         }
 
         printf("Contenido del array dinámico:\n");
-        for (int i = 0; i < 10; i++)
-        {
+        for (int i = 0; i < 10; i++) {
                 printf("array[%d] = %d\n", i, array[i]);
         }
 
@@ -93,32 +88,27 @@ int main()
         printf("──────────────────────────────────────────────\n\n");
 
         int *arr = malloc(5 * sizeof(int));
-        if (arr == NULL)
-        {
+        if (arr == NULL) {
                 printf("Error: no se pudo asignar memoria\n");
                 return 1;
         }
-        for (int i = 0; i < 5; i++)
-        {
+        for (int i = 0; i < 5; i++) {
                 arr[i] = i * 2;
         }
 
         printf("Array inicial de 5 elementos:\n");
-        for (int i = 0; i < 5; i++)
-        {
+        for (int i = 0; i < 5; i++) {
                 printf("arr[%d] = %d\n", i, arr[i]);
         }
 
         arr = realloc(arr, 10 * sizeof(int));
 
-        for (int i = 5; i < 10; i++)
-        {
+        for (int i = 5; i < 10; i++) {
                 arr[i] = i * 2;
         }
 
         printf("\nArray redimensionado a 10 elementos:\n");
-        for (int i = 0; i < 10; i++)
-        {
+        for (int i = 0; i < 10; i++) {
                 printf("arr[%d] = %d\n", i, arr[i]);
         }
 
@@ -131,15 +121,13 @@ int main()
         printf("──────────────────────────────────────────────\n\n");
 
         int *zeroArray = calloc(5, sizeof(int));
-        if (zeroArray == NULL)
-        {
+        if (zeroArray == NULL) {
                 printf("Error: no se pudo asignar memoria\n");
                 return 1;
         }
 
         printf("Array creado con calloc (inicializado a 0):\n");
-        for (int i = 0; i < 5; i++)
-        {
+        for (int i = 0; i < 5; i++) {
                 printf("zeroArray[%d] = %d\n", i, zeroArray[i]);
         }
 

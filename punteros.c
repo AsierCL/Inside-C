@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main(){
+int main() {
     printf("\n──────────────────────────────────────────────\n\n");
     printf("\t1.- Valor y dirección\n\n");
     printf("──────────────────────────────────────────────\n\n");
@@ -15,14 +15,14 @@ int main(){
     printf("Esta variable se encuentra almacenada en algún sitio.\n");
     printf("Para consultar la dirección de memoria en la que se encuentra, usamos &var.\n");
     printf("Imprimimos &var usando %%p, ya que es un valor hexadecimal:\n");
-    printf("printf(\"%%p\", (void*)&var);\n");
-    printf("%p\n\n", (void*)&var);
+    printf("printf(\"%%p\", &var);\n");
+    printf("%p\n\n", &var);
 
     printf("Resumiendo rápido:\n\n");
     printf("┌───────────────────────────────────┐\n");
     printf("│ Dirección de memoria │  Variable  │\n");
     printf("│         &var         │    var     │\n");
-    printf("│    %p    │     %d     │\n",(void*)&var, var);
+    printf("│    %p    │     %d     │\n", &var, var);
     printf("└───────────────────────────────────┘\n\n");
 
     getchar();
@@ -36,23 +36,23 @@ int main(){
     printf("int *ptr = &var;\n\n");
 
     printf("En este caso, ptr almacena la dirección de memoria de 'var'.\n");
-    printf("printf(\"%%p\", (void*)ptr);\n");
-    printf("%p\n", (void*)ptr);
+    printf("printf(\"%%p\", ptr);\n");
+    printf("%p\n", ptr);
 
     printf("Para acceder a su contenido, usamos *ptr:\n");
     printf("printf(\"%%d\", *ptr);\n");
     printf("%d\n\n", *ptr);
 
     printf("El puntero 'ptr' también está almacenado en una dirección de memoria propia:\n");
-    printf("printf(\"%%p\", (void*)&ptr);\n");
-    printf("%p\n\n", (void*)&ptr);
+    printf("printf(\"%%p\", &ptr);\n");
+    printf("%p\n\n", &ptr);
 
     printf("Representación en memoria:\n");
     printf("┌─────────────────────────────────────────────┐\n");
     printf("│ Valor int │    Dir int     │  Dir puntero   │\n");
     printf("├─────────────────────────────────────────────┤\n");
     printf("│   *ptr    │      ptr       │      &ptr      │\n");
-    printf("│    %d     │ %p │ %p │\n", *ptr, (void*)ptr, (void*)&ptr);
+    printf("│    %d     │ %p │ %p │\n", *ptr, ptr, &ptr);
     printf("└─────────────────────────────────────────────┘\n\n");
 
     getchar();
@@ -163,7 +163,8 @@ int main(){
     printf("Ejemplo:\n");
     printf("int var = 10;\n");
     printf("int *ptr = &var;\n");
-    printf("int **pptr = &ptr;\n\n");
+    printf("int **pptr = &ptr;\n");
+    printf("Esto se puede repetir cuanto se quiera, creando punteros a punteros a punteros...\n\n");
 
     printf("Valor de var: %d\n", var);
     printf("Dirección de var: %p\n", (void*)&var);
@@ -210,6 +211,11 @@ int main(){
     printf("x = %d (acceso con p1 = %p)\n", *p1, (void*)p1);
     *p2 = 200;
     printf("y (modificado a través de p2) = %d (p2 = %p)\n", *p2, (void*)p2);
+
+    printf("Resumen:\n");
+    printf("const int *p   → no puedes cambiar *p\n");
+    printf("int *const p   → no puedes cambiar p\n");
+    printf("const int *const p → no puedes cambiar ni p ni *p\n");
 
     return 0;
 }

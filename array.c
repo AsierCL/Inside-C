@@ -25,6 +25,7 @@ int main()
     printf("──────────────────────────────────────────────\n\n");
     printf("El nombre de un array (arr) se comporta como un puntero constante al primer elemento.\n");
     printf("Por eso, arr[i] es equivalente a *(arr + i).\n");
+    printf("Es decir, estamos accediendo a la dirección de memoria de arr + i casillas adelante.\n");
 
     printf("\nEjemplo comparando ambas formas:\n");
     for (int i = 0; i < 5; i++)
