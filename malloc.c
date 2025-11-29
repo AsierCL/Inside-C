@@ -79,7 +79,7 @@ int main() {
 
         free(array); // liberar memoria
 
-        printf("→ Siempre que usamos malloc, debemos liberar con free.\n");
+        printf("Siempre que usamos malloc, debemos liberar con free.\n");
 
         getchar();
 

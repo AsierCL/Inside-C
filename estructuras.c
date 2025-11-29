@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Definición de una estructura 'Persona' con typedef
 typedef struct {
     char nombre[50];
     int edad;
@@ -9,21 +8,27 @@ typedef struct {
 } Persona;
 
 int main() {
-    // Explicación de estructuras
-    printf("Uso de estructuras en C:\n\n");
+    printf("\n──────────────────────────────────────────────\n\n");
+    printf("\t1.- Uso de estructuras\n\n");
+    printf("──────────────────────────────────────────────\n\n");
 
-    // Declaración de una variable de tipo 'Persona'
     Persona persona1 = {"Juan", 25, 1.75};
 
     printf("Primero, definimos una estructura 'Persona' con los siguientes campos:\n");
-    printf("Persona persona = {\"Juan\", 25, 1.75};\n\n");
+    printf("typedef struct {\n");
+    printf("    char nombre[50];\n");
+    printf("    int edad;\n");
+    printf("    float altura;\n");
+    printf("} Persona;\n\n");
+
+    printf("Ahora, creamos una persona con esta estructura.\n");
+    printf("Persona persona1 = {\"Juan\", 25, 1.75};\n\n");
     printf("┌───────────────────────────────────────────────┐\n");
     printf("│  Nombre   │    Edad     │     Altura          │\n");
     printf("├───────────────────────────────────────────────┤\n");
     printf("│   Juan    │     25      │      1.75           │\n");
     printf("└───────────────────────────────────────────────┘\n\n");
 
-    // Mostrar el contenido de la estructura persona1
     printf("Accediendo a los valores de 'persona1' directamente:\n");
     printf("printf(\"Nombre: %%s\\n, persona1.nombre)\"\n");
     printf("Nombre: %s\n", persona1.nombre);
@@ -32,11 +37,14 @@ int main() {
     printf("printf(\"Nombre: %%.2f\\n, persona1.altura)\"\n");
     printf("Altura: %.2f\n", persona1.altura);
 
-    // Explicación de punteros a estructuras
+    getchar();
+
+    printf("\n──────────────────────────────────────────────\n\n");
+    printf("\t2.- Punteros a estructuras\n\n");
+    printf("──────────────────────────────────────────────\n\n");
     printf("\n\nAhora usaremos un puntero para acceder a la estructura.\n");
     printf("\nPersona *ptrPersona = &persona1\n");
 
-    // Declaración de un puntero a una estructura Persona
     Persona *ptrPersona = &persona1;
 
     printf("┌──────────────────────────────────────────────────────────┐\n");
@@ -45,13 +53,12 @@ int main() {
     printf("│ ptrPersona     │ Dirección de 'persona1': %p │\n", (void*)ptrPersona);
     printf("└──────────────────────────────────────────────────────────┘\n\n");
 
-    // Accediendo a la estructura usando el puntero (con operador '->')
     printf("Accediendo a los valores de 'persona1' a través del puntero 'ptrPersona':\n");
-    printf("printf(\"Nombre: %%s\\n, persona1->nombre)\"\n");
+    printf("printf(\"Nombre: %%s\\n, ptrPersona->nombre)\"\n");
     printf("Nombre: %s\n", ptrPersona->nombre);
-    printf("printf(\"Nombre: %%d\\n, persona1->edad)\"\n");
+    printf("printf(\"Nombre: %%d\\n, ptrPersona->edad)\"\n");
     printf("Edad: %d\n", ptrPersona->edad);
-    printf("printf(\"Nombre: %%.2f\\n, persona1->altura)\"\n");
+    printf("printf(\"Nombre: %%.2f\\n, ptrPersona->altura)\"\n");
     printf("Altura: %.2f\n", ptrPersona->altura);
 
     // Explicación de la diferencia entre "." y "->"
@@ -61,21 +68,23 @@ int main() {
     printf("│  '->' se usa para acceder a los campos a través de punteros │\n");
     printf("└─────────────────────────────────────────────────────────────┘\n\n");
 
-    // Uso de malloc para crear una nueva estructura dinámica
+    getchar();
+
+    printf("\n──────────────────────────────────────────────\n\n");
+    printf("\t3.- Estructurs dinámicas\n\n");
+    printf("──────────────────────────────────────────────\n\n");
     Persona *personaDinamica = (Persona*)malloc(sizeof(Persona));
     if (personaDinamica == NULL) {
         printf("Error al asignar memoria.\n");
         return 1;
     }
 
-    // Asignar valores a la estructura dinámica
     printf("Ahora creamos una estructura dinámica utilizando malloc:\n");
     printf("Persona personaDinamica = (Persona*)malloc(sizeof(Persona));\n");
     printf("Asignando valores a los campos de 'personaDinamica':\n");
     printf("*personaDinamica = (Persona){\"Ana\", 30, 1.65};\n");
     *personaDinamica = (Persona){"Ana", 30, 1.65};
 
-    // Acceder a la estructura dinámica usando punteros
     printf("┌───────────────────────────────────────────────┐\n");
     printf("│  Nombre   │    Edad     │     Altura          │\n");
     printf("├───────────────────────────────────────────────┤\n");
@@ -88,10 +97,12 @@ int main() {
     printf("printf(\"Nombre: %%d\\n, personaDinamica->edad)\"\n");
     printf("Edad: %d\n", personaDinamica->edad);
     printf("printf(\"Nombre: %%.2f\\n, personaDinamica->altura)\"\n");
-    printf("Altura: %.2f\n", personaDinamica->altura);
+    printf("Altura: %.2f\n\n", personaDinamica->altura);
 
-    // Liberar la memoria asignada dinámicamente
+    printf("Finalmente, liberamos la memoria asignada dinámicamente con free:\n");
+    printf("free(personaDinamica);\n");
     free(personaDinamica);
 
+    getchar();
     return 0;
 }

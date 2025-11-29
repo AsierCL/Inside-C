@@ -19,7 +19,6 @@ El orden recomendado es importante, porque cada archivo construye sobre lo visto
 ### 2 [`malloc.c`](malloc.c)
 - Memoria dinámica en C.
 - Uso de `malloc`, `calloc`, `realloc` y `free`.
-- Diferencia entre memoria en **stack** y en **heap**.
 - Qué pasa si no se libera la memoria (fugas de memoria).
 - Buenas prácticas: siempre comprobar si la asignación fue exitosa.
 
