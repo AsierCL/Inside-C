@@ -82,6 +82,9 @@ int main() {
     printf("│   %d   │  %p  │\n",*c,c);
     printf("└──────────────────────────┘\n");
 
+
+    getchar();
+
     printf("Ahora, vamos a hacer que el puntero 'c' apunte a la posiciónde memoria donde está 'a'\n");
     printf("c = &a;\n");
     c = &a;
@@ -217,5 +220,21 @@ int main() {
     printf("int *const p   → no puedes cambiar p\n");
     printf("const int *const p → no puedes cambiar ni p ni *p\n");
 
+    getchar();
+
+    printf("\n\n──────────────────────────────────────────────\n\n");
+    printf("\tRESUMEN FINAL\n\n");
+    printf("──────────────────────────────────────────────\n\n");
+
+    printf("Puedes imaginarte todo como si fueran taquillas.\n");
+    printf("La dirección de memoria es el número de taquilla, y el valor es su contenido.\n");
+    printf("Cuando creas una variable, por ejemplo un int a = 1; estas guardando ese valor en una 'taquilla'.\n");
+    printf("Esa taquilla tiene una llave con un número asociado, que es su dirección de memoria, &a.\n\n");
+    printf("Cuando creas un int *ptr; estas creando una 'llave'. Con ptr, ves el número de la taquilla que abre tu llave,\n");
+    printf("con un *ptr ves lo que hay dentro de la taquilla.\n\n");
+    printf("Si haces que ptr apunte a &a (ptr = &a;), tienes 'dos llaves que abren la misma taquilla'.\n");
+    printf("Por este motivo, cuando modificas el valor de a, se modificará el valor de *ptr, y viceversa.\n\n");
+
+    getchar();
     return 0;
 }

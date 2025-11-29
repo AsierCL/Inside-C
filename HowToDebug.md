@@ -30,17 +30,11 @@ There is NO WARRANTY, to the extent permitted by law.
 
 En Windows, el proceso es similar, pero necesitamos instalar un compilador y un debugger compatibles con VSCode. La opción más sencilla es MinGW-w64, que incluye `gcc` y `gdb`.
 
-Primero debemos instalar MingW-w64, desde su página oficial. [https://www.mingw-w64.org](https://www.mingw-w64.org/)
+Primero debemos instalar MingW-w64, desde su página oficial. [https://github.com/gorvgoyl/MinGW64/releases](https://github.com/gorvgoyl/MinGW64/releases)
 
-Instalas la versión correspondiente:
-- Architecture: x86_64
-- Threads: posix
-- Exception: seh
-- Build revision: la más nueva
+Descargas el último zip, el más actual, y lo descomprimes en `C:`.
 
-La instalas en un directorio sin espacios, como `C:\mingw64`.
-
-Una vez instalado, debes añadirlo al path. Busca "Editar variables de entorno", y en "Variables del sistema" añade `C:\mingw64\bin`.
+Una vez hecho lo anterior, debes añadirlo al path. Busca "Editar variables de entorno", y en "Variables del sistema", y en path le das a "editar" y "nuevo", y añades `C:\mingw64\bin`. Mi recomendación es que lo añadas arriba y abajo, es decir, en el path del usuario y del sistema. 
 
 Para verificar la instalación, ejecuta:
 ```powershell
@@ -57,7 +51,7 @@ gdb (GDB) 13.2
 ## Uso del debugger
 
 Una vez tenemos esto, podemos abrir VSCode. En las extensiones, buscamos `C/C++`, y la instalamos.
-![](images/C++.png)
+![C Extension](images/CExtension.png)
 
 Si todo ha salido bien, cuando esteamos en un archivo de C, tenemos arriba a la derecha lo siguiente:
 ![Botón Debug](images/Debug.png)
