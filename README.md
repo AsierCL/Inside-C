@@ -41,19 +41,6 @@ El orden recomendado es importante, porque cada archivo construye sobre lo visto
 ## Requisitos previos
 
 - Conocimientos básicos de programación (variables, bucles, funciones).
-- Tener instalado un **compilador de C**:
-  - En Linux: `gcc` o `clang`.
-  - En Windows: `MinGW`, WSL, IDEs.
-  - En macOS: `clang` viene por defecto con Xcode Command Line Tools.
+- Tener instalado un **compilador y un debugger de C**:
 
-Para comprobar que tienes compilador:
-```bash
-gcc --version
-```
-
-Todos los programas se pueden simplemente ejecutar y leer las lecciones, pero recomiendo **debuggear**, para ejecutar linea por linea el código.
-
-Para comprobar que tienes debugger:
-```bash
-gdb --version
-```
+Si no tienes el compilador y el debugger, aqui explico [`como instalarlos`](HowToDebug.md).
